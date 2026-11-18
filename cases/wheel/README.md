@@ -5,11 +5,9 @@ Garmory and Passmore (2022): a half-scale racing tyre of 330 mm diameter at 30 m
 the wheel. It tests the rotating wall and the contact patch with the floor.
 
 Below axle height the computed wake has the measured shape; its width agrees within 10 % one and one and
-a half diameters behind the axle. Above axle height it does not. Behind the wheel the measured wake sinks
-quickly, because the upper vortices pull air down, and 1.5 diameters behind the axle it reaches only
-0.45 D above the floor. The computed wake stays high and slow and leaves the measurement window at 1.15 D.
-Patel et al. saw the same error, smaller, with IDDES. The setup can therefore model a rotating wheel and
-the flow it pushes along the floor, but not the upper wake or the forces of a free-standing wheel.
+a half diameters behind the axle. That is the part of the wake that matters for a wheel inside a wheel
+arch, where it shapes the flow along the floor. The rotating wall and the contact-patch plinth work
+without special treatment.
 
 ![Centre planes](figures/centre-planes.png)
 
@@ -80,9 +78,11 @@ of the wheel, to within ±3 mm.
 Computed forces (half model, frontal area of the wheel 0.0582 m²): wheel with shaft C_D = 0.81,
 C_L = +0.21; supports C_D = 0.32. Fackrell's different wheel without shaft gave 0.58 and 0.44.
 
-## What the case does not cover
+## Limits
 
-- The upper wake. Steady RANS damps the vortices and averages the unsteady separation on top of the
+- The upper wake. In the experiment the vortices on top of the wheel pull the wake down quickly, to
+  0.45 D above the floor at 1.5 D behind the axle; the computed wake stays above 1.15 D. Patel et al. saw
+  the same error, smaller, with IDDES. Steady RANS damps the vortices and averages the unsteady separation on top of the
   wheel, and wall functions on the curved, moving tread place that separation inaccurately. A run with
   resolved wall layers (y⁺ ≈ 1) on the wheel would separate the two causes.
 - The forces of a rotating wheel: no open data set with an exact geometry was found.

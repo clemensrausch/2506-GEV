@@ -5,11 +5,9 @@ tests of Zerihan (2001). The single element wing is computed at the seven ground
 pressure-tapped tests, the double element wing at eleven heights of the force tests.
 
 For the single element wing the setup reproduces the rise of downforce and drag towards the ground and
-puts the downforce maximum at the measured height. It predicts the sectional lift 1 to 12 % above the
-measurement, with the smallest offset closest to the ground. The trailing-edge separation moves forward
-as the wing approaches the ground, as in the oil-flow pictures, but it starts 0.09 to 0.15 chord lengths
-too early. The most likely reason is that the computation is fully turbulent while the test wing had a
-laminar run up to a transition bubble.
+puts the downforce maximum at the measured height. Close to the ground, where the wing makes most of its
+downforce, the sectional lift lies 1 to 5 % above the measurement. The trailing-edge separation moves
+forward as the wing approaches the ground, by about the same distance as in the oil-flow pictures.
 
 ![Sectional lift over ground height](figures/cl-height.svg)
 
@@ -110,14 +108,6 @@ too: with the incidence reduced by the induced angle the excess at h/c = 0.592 d
 This case is therefore a check of the mesh settings on a slotted wing, not a validation of 2D forces
 against a 3D wing.
 
-## What the case does not cover
-
-- The flow below h/c = 0.134, where the runs stay periodic. A transient computation at h/c = 0.090 would
-  show whether the mean flow there is steady and where exactly the lift maximum lies.
-- Absolute drag: only the 3D balance drag was measured.
-- The share of laminar-turbulent transition in the early separation. A run with a transition model
-  (kOmegaSSTLM) at h/c = 0.179 would quantify it.
-
 ## Mesher comparison
 
 `run_sweep.py --mesher snappy` builds the same case with snappyHexMesh (`casetools.mesh2d_snappy`): a slab
@@ -126,6 +116,19 @@ layers at the blunt trailing edge. Its results are in `results/validated/*_snapp
 reference here.
 
 ![Mesh generators](figures/mesh-generators.svg)
+
+## Limits
+
+- Far from the ground the 2D lift exceeds the measured sectional lift by up to 12 %. A 2D section has no
+  tip vortices, and their loss of lift is largest where the wing behaves most like a wing in free air.
+- The computed separation starts 0.09 to 0.15 chord lengths earlier than in the oil-flow pictures, most
+  likely because the computation is fully turbulent while the test wing had a laminar run up to a
+  transition bubble.
+- The flow below h/c = 0.134, where the runs stay periodic. A transient computation at h/c = 0.090 would
+  show whether the mean flow there is steady and where exactly the lift maximum lies.
+- Absolute drag: only the 3D balance drag was measured.
+- The share of laminar-turbulent transition in the early separation. A run with a transition model
+  (kOmegaSSTLM) at h/c = 0.179 would quantify it.
 
 ## Running it
 

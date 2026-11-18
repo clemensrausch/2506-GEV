@@ -5,10 +5,9 @@ at slant angles of 25° and 35°. At 25° the flow separates at the roof edge an
 held there by two vortices from the slant's side edges. At 35° it separates and does not reattach.
 
 The setup finds both flow states. The drag of the body comes out 3 to 7 % below the two available
-measurements at 25° and within 8 % at 35°. The mean wall pressure on roof, slant, base and sides agrees
-within ΔC_p = 0.05, except on the 25° slant, where the computed suction is 0.13 too weak. One setting
-decided the result. With the convection scheme of the motorBike tutorial the 35° flow stayed attached to
-the slant and the drag came out about 50 % too high.
+measurements at 25° and within 8 % at 35°. The mean wall pressure on roof, base and sides agrees within
+ΔC_p = 0.05. One setting decided the result: the convection scheme for the velocity, described under
+Setup.
 
 ![Geometry and domain](figures/geometry-domain.svg)
 
@@ -93,8 +92,10 @@ too weak. At 35° the separated flow swings, and the mean is taken over whole pe
 
 ![Centre-line pressure](figures/cp-centreline.svg)
 
-## What the case does not cover
+## Limits
 
+- On the 25° slant the computed suction is ΔC_p = 0.13 too weak. The flow has the measured structure,
+  a bubble at the roof edge held by the side vortices, but RANS underpredicts the vortex strength there.
 - The lift, which scatters by 17 % between meshes and has a single measurement without uncertainty.
 - Unsteady loads of the wake.
 - A moving ground, rotating wheels and walls resolved to y⁺ ≈ 1. The diffuser and wheel cases test those.

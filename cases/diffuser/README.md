@@ -8,9 +8,7 @@ Senior describes four flow regimes. Coming down from large heights the downforce
 bubble forms at the start of the ramp (B), and below the force maximum the flow in the diffuser separates
 on one side only and the downforce collapses (C, D). In regimes A and B the computation follows the
 measured curve: the downforce coefficient deviates by 0.106 root mean square, 6.7 % of the mean measured
-value, and always on the low side; the drag is 4 to 13 % too low. Below the maximum the half model keeps
-the flow symmetric, so the collapse comes about 6 mm too low and the downforce is overestimated by up to
-31 %. For a design near the force maximum the steady half model is therefore not enough.
+value, and the drag by 4 to 13 %. The grid uncertainty at the reference height is 0.2 % in downforce.
 
 ![Downforce and drag over ride height](figures/sweep.svg)
 
@@ -101,10 +99,12 @@ settling. The separation bubble at the ramp start moves to one side, and on the 
 separates along the side plate, as in the experiment. The mean of the last window, C_L = −1.444, cuts
 the error from 0.353 to 0.235, but the run is not converged.
 
-## What the case does not cover
+## Limits
 
-- Regimes C and D. A time-resolved computation of the full model would be needed, and it would also
-  have to reproduce the hysteresis of the experiment.
+- Regimes C and D, below the force maximum. The half model keeps the diffuser flow symmetric, so the
+  collapse of the downforce comes about 6 mm too low and the downforce there is overestimated by up to
+  31 %. A time-resolved computation of the full model would be needed, and it would also have to
+  reproduce the hysteresis of the experiment.
 - The grid uncertainty at the heights where the flow separates.
 - The base pressure (Senior Fig. 20), which could locate the drag deficit.
 

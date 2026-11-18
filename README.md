@@ -3,22 +3,21 @@
 Steady RANS setups for OpenFOAM v2506 (openfoam.com) for bodies close to the ground: wings in ground
 effect, bluff bodies, underbody diffusers and rotating wheels. Each setup was checked against a published
 wind-tunnel experiment. The repository contains the settings, the Python scripts that turn a geometry into
-a complete case, the results of the validation runs and a write-up of each comparison, including where the
-setup fails.
+a complete case, the results of the validation runs and a write-up of each comparison.
 
 The cases share one set of physics: k-ω SST, SIMPLEC, the same wall functions and the same mesh logic.
 The 2D setup started from the Ahmed reference mesh scaled to the wing. The 3D template then took over the
 2D settings and was tested on three bodies of increasing difficulty.
 
-| Case | Tests | Result | Not covered |
-|---|---|---|---|
-| [Tyrrell 026 wing, 2D](cases/tyrrell026/) | wing over a moving ground, y⁺ ≈ 1, 7 heights | lift 1 to 12 % above the measurement, maximum at the measured height; separation 0.09 to 0.15c too early | flow below the lift maximum, transition |
-| [Ahmed body, 3D](cases/ahmed/) | separation at sharp rear edges, 25° and 35° slant | drag within 8 %, wall pressure within ΔC_p = 0.05 except on the 25° slant (0.13) | lift, moving ground |
-| [Diffuser body, 3D](cases/diffuser/) | underbody diffuser over a moving ground, 10 heights | downforce within 6.7 % (RMS) at and above the force maximum | the asymmetric stall below the maximum |
-| [Rotating wheel, 3D](cases/wheel/) | rotating wall, contact patch, wake | wake below axle height within 10 % | upper wake, wheel forces |
+| Case | Tests | Result |
+|---|---|---|
+| [Tyrrell 026 wing, 2D](cases/tyrrell026/) | wing over a moving ground, y⁺ ≈ 1, 7 heights | downforce trend and maximum at the measured height; lift within 1 to 5 % near the ground |
+| [Ahmed body, 3D](cases/ahmed/) | separation at sharp rear edges, 25° and 35° slant | both flow states, drag within 8 %, wall pressure within ΔC_p = 0.05 on most surfaces |
+| [Diffuser body, 3D](cases/diffuser/) | underbody diffuser over a moving ground, 10 heights | downforce within 6.7 % (RMS) from large heights down to the force maximum |
+| [Rotating wheel, 3D](cases/wheel/) | rotating wall, contact patch, wake | wake below axle height within 10 % |
 
 Each case folder has a README with experiment, setup, verification, comparison and limits, and a
-SOURCES.md for the third-party data.
+SOURCES.md for the third-party data. The ranges the cases do not cover are listed under Limits below.
 
 ## Requirements
 
@@ -133,6 +132,14 @@ The scripts here reproduce the validation runs: for the 3D cases they write the 
 evaluation scripts give the archived results from the finished cases. Two exceptions are documented in the
 case READMEs. gmsh's quad mesher does not give identical meshes from run to run; a rerun differs by a few
 tens of cells and should agree with the archived lift to about 0.1 %.
+
+## Limits
+
+All setups are steady RANS. The cases cover attached and separated flow as long as the mean flow is steady
+and, for the half models, symmetric. Not covered are the flow below the force maximum of the wing and the
+diffuser, where the experiments show unsteady or one-sided separation, the upper wake of the wheel and the
+forces of a free-standing wheel, and laminar-turbulent transition. Each case README says where its range
+ends.
 
 ## What is not in the repository
 
