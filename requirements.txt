@@ -1,0 +1,9 @@
+# versions the validation runs were made with (Python 3.12, OpenFOAM v2506 from openfoam.com)
+numpy==2.4.4
+scipy==1.17.1
+matplotlib==3.10.9
+gmsh==4.15.2
+trimesh==4.12.2
+manifold3d==3.5.4
+shapely==2.1.2
+networkx==3.6.1

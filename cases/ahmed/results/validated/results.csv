@@ -1,0 +1,18 @@
+case,slant,label,u_scheme,model,wall,mesh,cells,h,Cd_body,Cl_body,Cd_stilts,iterations,window,status,s_per_iter
+ahmed25_m5,25,y+1 layers small domain,linearUpwindV,kOmegaSST,layers,m5,1776663,0.041167,0.32258,0.27569,0.028938,1204,401,ok,2.8256
+ahmed25_m6,25,y+1 layers,linearUpwindV,kOmegaSST,layers,m6,1993251,0.048531,0.32196,0.27915,0.028936,1202,400,ok,2.6136
+ahmed25_wf,25,wall functions,linearUpwindV,kOmegaSST,wallfn,medium,1498592,0.053372,0.29391,0.29523,0.028889,1209,400,ok,1.8703
+ahmed25_wf_ll,25,k and omega limitedLinear,linearUpwindV,kOmegaSST,wallfn,medium,1498592,0.053372,0.30093,0.30545,0.028443,1202,400,ok,2.0227
+ahmed25_wf_lust_c,25,LUST coarse,LUST,kOmegaSST,wallfn,coarse,747043,0.067952,0.2727,0.33819,0.036146,1341,400,ok,0.75367
+ahmed25_wf_lust,25,LUST medium,LUST,kOmegaSST,wallfn,medium,1498599,0.053372,0.27732,0.28556,0.030234,2014,500,ok,0.64603
+ahmed25_wf_lust_f,25,LUST fine,LUST,kOmegaSST,wallfn,fine,2987099,0.042358,0.27198,0.30949,0.03593,1206,400,ok,2.016
+ahmed35_wf,35,wall functions,linearUpwindV,kOmegaSST,wallfn,medium,1500489,0.05335,0.40907,0.44719,0.028433,1204,400,ok,2.302
+ahmed35_wf_fa30,35,layers stop at edges,linearUpwindV,kOmegaSST,wallfn,medium,1491883,0.053452,0.42143,0.38856,0.031383,1266,400,ok,1.8019
+ahmed35_wf_ll,35,k and omega limitedLinear,linearUpwindV,kOmegaSST,wallfn,medium,1500511,0.053349,0.40478,0.44946,0.028303,1202,400,ok,1.9144
+ahmed35_wf_us,35,uniform start,linearUpwindV,kOmegaSST,wallfn,medium,1500504,0.05335,0.4083,0.44376,0.028761,1214,400,ok,1.8791
+ahmed35_wf_sb,35,slant box,linearUpwindV,kOmegaSST,wallfn,medium+box,1876516,0.049518,0.41029,0.3946,0.028481,1545,617,ok,2.4222
+ahmed35_wf_sb_rke,35,realizable k-epsilon + slant box,linearUpwindV,realizableKE,wallfn,medium+box,1876614,0.049517,0.2903,-0.0026309,0.027011,3000,400,unsteady,1.0447
+ahmed35_wf_sb_lust,35,LUST + slant box,LUST,kOmegaSST,wallfn,medium+box,1876523,0.049517,0.25032,-0.039032,0.030047,3000,667,unsteady,0.65067
+ahmed35_wf_lust_c,35,LUST coarse,LUST,kOmegaSST,wallfn,coarse,749555,0.067876,0.26499,0.0084995,0.036316,3000,400,unsteady,0.99171
+ahmed35_wf_lust,35,LUST medium,LUST,kOmegaSST,wallfn,medium,1500504,0.05335,0.25652,-0.030518,0.030146,3000,400,unsteady,0.50718
+ahmed35_wf_lust_f,35,LUST fine,LUST,kOmegaSST,wallfn,fine,2990568,0.042342,0.25655,-0.024805,0.036274,1958,400,ok,2.3

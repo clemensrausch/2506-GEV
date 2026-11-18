@@ -1,0 +1,6 @@
+# h/c 0.592, gmsh, datum flap
+alpha,cl,cd,iterations,converged
+-11.0,1.22395,0.02002,1406,True
+-8.0,1.66986,0.02356,1480,True
+-5.0,2.11546,0.02920,1578,True
+1.0,2.95114,0.05074,1738,True

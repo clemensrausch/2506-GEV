@@ -1,0 +1,2 @@
+cells,iterations,window,status,s_per_iter,frontal_area,Cd_wheel,Cl_wheel,Cd_supports,Cd_wheel_std,Cl_wheel_std,Cd_wheel_half,Cl_wheel_half,layers_wheel,layers_wheel_pct,layers_ground,layers_ground_pct,yplus_wheel_mean,yplus_wheel_min,yplus_wheel_max
+5966135,3000,667,unsteady,1.58187,0.0581913,0.806646,0.205427,0.320044,0.0188622,0.00768932,0.0171083,0.0103351,3.97,98,4,99.3,14.7476,0.626976,133.642

@@ -1,0 +1,105 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2506                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    p
+    {
+        solver          GAMG;
+        // DIC instead of the Ahmed GaussSeidel: same tolerance and solution, but on a gmsh mesh of a car section
+        // (thin ground layers, cells of aspect ratio up to ~1e3) GaussSeidel needed ~700 GAMG cycles per
+        // solve, 7 s per iteration; DIC 6x faster. Tyrrell h/c 0.671/0.179/0.134: Cl within 0.08 % (2026-10-07)
+        smoother        DIC;
+        tolerance       1e-7;
+        relTol          0;
+    }
+
+    Phi
+    {
+        $p;
+    }
+
+    U
+    {
+        solver          smoothSolver;
+        smoother        GaussSeidel;
+        tolerance       1e-8;
+        relTol          0;
+        nSweeps         1;
+    }
+
+    k
+    {
+        solver          smoothSolver;
+        smoother        GaussSeidel;
+        tolerance       1e-8;
+        relTol          0.01;
+        nSweeps         1;
+    }
+
+    omega
+    {
+        solver          smoothSolver;
+        smoother        GaussSeidel;
+        tolerance       1e-8;
+        relTol          0.01;
+        nSweeps         1;
+    }
+}
+
+SIMPLE
+{
+    nNonOrthogonalCorrectors 2;
+    consistent yes;
+
+    residualControl					
+    {								//	for more accurate simulation:
+        p               1e-4;		//	1e-4
+        U               1e-5;		//	1e-5
+        "(k|omega)"     1e-5;		//	1e-5
+    }
+}
+
+potentialFlow
+{
+    nNonOrthogonalCorrectors 10;
+}
+
+relaxationFactors
+{
+	fields
+    {
+        // 0.3 kept (2026-10-07): 0.7 converged Tyrrell h/c 0.134 faster (1242 instead of 2108 iterations) but the
+        // car section with a stalling diffuser slower (3545 instead of 2822 iterations, larger force swings);
+        // p 1 with U/k/omega 0.9 sent Tyrrell 0.134 into an oscillation 2.7 % above the converged Cl
+        p 0.3;
+    }
+	
+	equations
+    {
+        U               0.8;
+        k               0.8;
+        omega           0.8;
+    }
+}
+
+cache
+{
+    grad(U);
+}
+
+
+// ************************************************************************* //

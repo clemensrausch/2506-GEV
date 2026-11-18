@@ -1,0 +1,11 @@
+plane,position,quantity,cfd
+y0,x/D=0.75,wake top (U<0.7) /D,1.15
+y0,x/D=1.0,wake top (U<0.7) /D,1.15
+y0,x/D=1.5,wake top (U<0.7) /D,1.15
+y50,x/D=0.75,wake top (U<0.7) /D,1.11
+y50,x/D=1.0,wake top (U<0.7) /D,1.11
+y50,x/D=1.5,wake top (U<0.7) /D,1.08
+x330,y/D=0.1,wake half width (U<0.7) /D,0.65
+x330,y/D=0.3,wake half width (U<0.7) /D,0.50
+x495,y/D=0.1,wake half width (U<0.7) /D,0.64
+x495,y/D=0.3,wake half width (U<0.7) /D,0.49

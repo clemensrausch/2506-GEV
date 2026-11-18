@@ -1,0 +1,2 @@
+case,hr_d,hr_m,CL,CD,status,stop,iterations,window,cells,s_per_iter,CL_std,CD_std,CL_half,CD_half,layers_target,layers_mean,layer_thickness_pct,yplus_mean,yplus_max
+diffuser_hd0159_full,0.159,0.024963,-1.44355,0.439895,unsteady,None,3000,667,5711520,1.71536,0.054454,0.00726034,0.0976751,0.0127126,21,14.2,91.9,8.04387,189.167

@@ -1,0 +1,4 @@
+case,side,ramp_area_m2,reversed_share
+diffuser_hd0159,z>0,0.08987,0.1152
+diffuser_hd0159_full,z<0,0.08987,0.1151
+diffuser_hd0159_full,z>0,0.08987,0.1046

@@ -1,0 +1,8 @@
+# third-party input data (geometry, measurements): see cases/*/SOURCES.md, never publish
+cases/*/data/*
+!cases/*/data/README.md
+# plots that contain third-party measurements are made locally
+cases/*/results/*.png
+__pycache__/
+*.pyc
+.venv/
