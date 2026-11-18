@@ -23,9 +23,9 @@ import numpy as np
 
 import _path  # noqa: F401
 import wing
-from gev import RUNS, mesh2d_gmsh, mesh2d_snappy
-from gev.foam import sh
-from gev.tables import read_csv
+from casetools import RUNS, mesh2d_gmsh, mesh2d_snappy
+from casetools.foam import sh
+from casetools.tables import read_csv
 
 HERE = Path(__file__).resolve().parent
 CASES = RUNS / "tyrrell026"

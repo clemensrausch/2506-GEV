@@ -1,4 +1,4 @@
-"""Isolated rotating wheel (Patel, Garmory & Passmore 2022) with the 3D template gev.mesh3d: mesh, solve.
+"""Isolated rotating wheel (Patel, Garmory & Passmore 2022) with the 3D template casetools.mesh3d: mesh, solve.
 
 Flow as in the Loughborough Large Wind Tunnel test: 30 m/s (Re_D 0.67e6), turbulence intensity 0.2 %, fixed floor,
 working section 1.92 m wide and 1.32 m high (blockage 3.3 %). The tunnel's side walls and roof are modelled as
@@ -24,7 +24,7 @@ import numpy as np
 
 import _path  # noqa: F401
 import wheel_geometry as wg
-from gev import RUNS, mesh3d, run3d
+from casetools import RUNS, mesh3d, run3d
 
 CASES = RUNS / "wheel"
 D = 2 * wg.R

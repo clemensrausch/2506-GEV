@@ -29,7 +29,7 @@ at the leading edge, so the measured value is more likely too low than too high.
 
 ## Setup
 
-The mesh comes from gmsh (`gev.mesh2d_gmsh`, profile `TYRRELL`), quad-dominant with prism layers that
+The mesh comes from gmsh (`casetools.mesh2d_gmsh`, profile `TYRRELL`), quad-dominant with prism layers that
 run unbroken around the blunt trailing edge. The cell sizes are the snappyHexMesh settings of the 3D Ahmed
 reference case, scaled by c/L.
 
@@ -120,7 +120,7 @@ against a 3D wing.
 
 ## Mesher comparison
 
-`run_sweep.py --mesher snappy` builds the same case with snappyHexMesh (`gev.mesh2d_snappy`): a slab
+`run_sweep.py --mesher snappy` builds the same case with snappyHexMesh (`casetools.mesh2d_snappy`): a slab
 one cell thick, extruded to 2D. Its C_l lies 0.8 to 2.3 % below gmsh, because snappy leaves gaps in the
 layers at the blunt trailing edge. Its results are in `results/validated/*_snappy.csv`. gmsh is the
 reference here.

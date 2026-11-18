@@ -401,7 +401,7 @@ def write_fvsolution(sysd, p):
     s = SOLVERS[p["solver"]]
     p_relax = f"    fields\n    {{\n        p               {s['p_relax']};\n    }}\n" if s["p_relax"] else ""
     write(sysd / "fvSolution", "fvSolution", f"""\
-// solver preset "{p['solver']}" (gev.mesh3d.SOLVERS)
+// solver preset "{p['solver']}" (casetools.mesh3d.SOLVERS)
 solvers
 {{
     p
@@ -441,7 +441,7 @@ SIMPLE
     nNonOrthogonalCorrectors {s['nonOrth']};
     consistent      yes;
 
-    // no residual stop: the force-based rules of gev.convergence decide (plateau, or settled windows after 1200
+    // no residual stop: the force-based rules of casetools.convergence decide (plateau, or settled windows after 1200
     // iterations). With p 1e-4 the diffuser runs stopped at 640-840 iterations while C_L still drifted
     // by 0.5-1.4 % over the last window (2026-10-19).
     residualControl

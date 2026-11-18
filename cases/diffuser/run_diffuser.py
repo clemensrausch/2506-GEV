@@ -1,4 +1,4 @@
-"""Diffuser bluff body (Senior 2002, 17 deg) with the 3D template gev.mesh3d: geometry, mesh, solve, compare.
+"""Diffuser bluff body (Senior 2002, 17 deg) with the 3D template casetools.mesh3d: geometry, mesh, solve, compare.
 
 One case per ride height h_r/d (d = 0.157 m). Flow as in Senior's force tests: 20 m/s (Re_l 1.75e6), moving
 ground at freestream speed, half model (--full: whole model, for the asymmetric stall of type C). Underbody
@@ -26,8 +26,8 @@ import numpy as np
 
 import _path  # noqa: F401
 import diffuser_body
-from gev import RUNS, mesh3d, run3d
-from gev.tables import read_csv
+from casetools import RUNS, mesh3d, run3d
+from casetools.tables import read_csv
 
 HERE = Path(__file__).resolve().parent
 CASES = RUNS / "diffuser"

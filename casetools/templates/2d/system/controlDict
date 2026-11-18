@@ -14,41 +14,25 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 application     simpleFoam;
-
-startFrom       latestTime;
-
+startFrom       startTime;
 startTime       0;
-
 stopAt          endTime;
-
-endTime         3000;           // set by gev.run3d
-
+endTime         3000;
 deltaT          1;
-
 writeControl    timeStep;
-
-writeInterval   500;
-
-purgeWrite      1;              // keep only the latest fields (3D cases are large)
-
-writeFormat     binary;
-
-writePrecision  10;
-
+writeInterval   50;
+purgeWrite      0;
+writeFormat     ascii;
+writePrecision  12;     // mesh points: 6 digits are only 10 um at x ~ 1 m, as thin as the first wall layer
 writeCompression off;
-
 timeFormat      general;
-
 timePrecision   6;
-
 runTimeModifiable true;
 
 functions
 {
-    #include "forces"           // written by gev.mesh3d: per part and total, reference values from the profile
+    #include "forceCoeffs"      // written by casetools.case2d (lRef/Aref from the body)
     #include "solverInfo"
 
     yPlus
@@ -58,11 +42,10 @@ functions
         writeControl    writeTime;
     }
 
-    wallShearStress     // separation detection
+    wallShearStress     // separation detection (separation.py)
     {
         type            wallShearStress;
         libs            (fieldFunctionObjects);
-        patches         (car);
         writeControl    writeTime;
     }
 }

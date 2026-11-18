@@ -1,6 +1,4 @@
-# 2506-GEV
-
-Ground-Effect Validation for OpenFOAM v2506.
+# Ground-Effect Validation for OpenFOAM v2506
 
 Steady RANS setups for OpenFOAM v2506 (openfoam.com) for bodies close to the ground: wings in ground
 effect, bluff bodies, underbody diffusers and rotating wheels. Each setup was checked against a published
@@ -22,17 +20,6 @@ The 2D setup started from the Ahmed reference mesh scaled to the wing. The 3D te
 Each case folder has a README with experiment, setup, verification, comparison and limits, and a
 SOURCES.md for the third-party data.
 
-## What is not in the repository
-
-No meshes, no fields and no third-party data. The wing coordinates, the nose surface of the Ahmed body
-and all measurements belong to their authors and are not redistributed here. Each `SOURCES.md` says
-where to get them, how to name them and which script reads them; they go into the `data/` folder of the
-case, which git ignores. The diffuser body and the wheel are built from published dimensions and run
-without any third-party file.
-
-The results in `results/validated/` contain only values of these computations. The figures show the
-measurements as cited comparison points.
-
 ## Requirements
 
 - OpenFOAM v2506 from openfoam.com, sourced in the shell: `source /usr/lib/openfoam/openfoam2506/etc/bashrc`
@@ -51,7 +38,7 @@ Cases are written to `$GEV_RUNS` (default `~/gev-runs`). All scripts run from th
 ## Layout
 
 ```
-gev/                    the package
+casetools/                Python tools that build, mesh, run and evaluate the cases
   geometry2d.py           2D contours: Body, wings from tables, NACA 4-digit sections
   mesh2d_gmsh.py          2D mesh with gmsh (quads, prism layers, fans at sharp corners), profile TYRRELL
   mesh2d_snappy.py        2D mesh with snappyHexMesh on a one-cell slab, profile TYRRELL
@@ -73,7 +60,7 @@ x = −c: domain, boxes and cell sizes are absolute lengths. A wing of that size
 another size copy the profile and scale these lengths with the chord.
 
 ```python
-from gev import geometry2d, mesh2d_gmsh
+from casetools import geometry2d, mesh2d_gmsh
 suction, pressure = geometry2d.naca4("4412")
 wing = geometry2d.single_element(suction, pressure, h_over_c=0.2, alpha=2.0, chord=0.2234, x_le=-0.2234)
 mesh2d_gmsh.mesh_case(case, wing, mesh2d_gmsh.TYRRELL)
@@ -82,7 +69,7 @@ mesh2d_gmsh.mesh_case(case, wing, mesh2d_gmsh.TYRRELL)
 In 3D, describe the body as closed STL parts and pick the wall treatment per part:
 
 ```python
-from gev import mesh3d, run3d
+from casetools import mesh3d, run3d
 parts = [mesh3d.Part("body", "body.stl", layers="wallfn"),
          mesh3d.Part("underbody", "underbody.stl", layers="resolved", level=(5, 5))]
 profile = dict(mesh3d.DEFAULTS, U_inf=20.0, moving_ground=True, ref_area=0.1)
@@ -116,6 +103,29 @@ READMEs give the evidence.
 - Layers in one pass on thin y⁺ ≈ 1 stacks (`nOuterIter 1`). In three passes the thinnest layers
   failed the quality checks and the first cell grew from 18 to 66 µm.
 
+## Hardware
+
+The 2D cases run on a desktop: 100 000 to 180 000 cells, 2 to 5 minutes per case on 8 cores. The 3D
+cases have 1.5 to 6.7 million cells and need about 2 GB of memory per million cells while solving;
+snappyHexMesh takes more for a short time, up to about 2.8 GB per million cells on the wheel. Meshes above
+about 6 million cells need more than 16 GB.
+
+The 3D runs were made on rented cloud servers. A comparison on the coarse Ahmed mesh (0.75 million
+cells, 8 MPI processes):
+
+| Server | s per iteration | Cost per 1000 iterations and million cells |
+|---|---|---|
+| x86, 8 shared cores (AMD EPYC Genoa) | 0.25 | 1.2 ct |
+| x86, 4 shared cores | 0.66 | 1.7 ct |
+| ARM, 8 shared cores | 0.72 | 1.1 ct |
+| x86, 4 dedicated cores with 2 threads each | 0.50 | 4.9 ct |
+
+Shared x86 servers with 8 cores were the best trade-off: three times faster than ARM at almost the same
+cost per iteration. Doubling the cores from 4 to 8 made the run 2.65 times faster. On the 1.5 million cell
+Ahmed mesh a desktop with a Ryzen 7 5800X (8 cores) needed 2.3 s per iteration, the 8-core x86 server
+0.51 s. Spreading one case over several servers does not pay off; one case per server does. Each value is a
+single measurement on shared hardware.
+
 ## Reproducibility
 
 The scripts here reproduce the validation runs: for the 3D cases they write the same geometry
@@ -123,6 +133,17 @@ The scripts here reproduce the validation runs: for the 3D cases they write the 
 evaluation scripts give the archived results from the finished cases. Two exceptions are documented in the
 case READMEs. gmsh's quad mesher does not give identical meshes from run to run; a rerun differs by a few
 tens of cells and should agree with the archived lift to about 0.1 %.
+
+## What is not in the repository
+
+No meshes, no fields and no third-party data. The wing coordinates, the nose surface of the Ahmed body
+and all measurements belong to their authors and are not redistributed here. Each `SOURCES.md` says
+where to get them, how to name them and which script reads them; they go into the `data/` folder of the
+case, which git ignores. The diffuser body and the wheel are built from published dimensions and run
+without any third-party file.
+
+The results in `results/validated/` contain only values of these computations. The figures show the
+measurements as cited comparison points.
 
 ## Licence
 

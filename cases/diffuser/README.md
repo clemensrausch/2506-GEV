@@ -36,7 +36,7 @@ plates are 5 mm thick. The support struts on top are not modelled.
 
 ## Setup
 
-Half model, `gev.mesh3d` with the profile `DIFFUSER` of `run_diffuser.py`.
+Half model, `casetools.mesh3d` with the profile `DIFFUSER` of `run_diffuser.py`.
 
 | Item | Choice | Reason |
 |---|---|---|
@@ -48,7 +48,7 @@ Half model, `gev.mesh3d` with the profile `DIFFUSER` of `run_diffuser.py`.
 | Diffuser box | 5 mm from 0.1 m ahead of the ramp to 0.4 m behind the base | |
 | Ground | moving wall at 20 m/s | rolling road |
 | Turbulence, schemes | k-ω SST, LUST for U, as the Ahmed case | |
-| Stop and mean | force rules of `gev.convergence`, no residual limit | with a residual limit of 1e-4 the runs stopped at 640 to 840 iterations while C_L still drifted by 0.5 to 1.4 % |
+| Stop and mean | force rules of `casetools.convergence`, no residual limit | with a residual limit of 1e-4 the runs stopped at 640 to 840 iterations while C_L still drifted by 0.5 to 1.4 % |
 
 The meshes have 2.5 to 6.7 million cells; the lowest heights need the most because of the gap box.
 C_L keeps Senior's sign (negative is downforce) and refers to the frontal area of 0.1008 m².

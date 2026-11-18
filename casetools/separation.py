@@ -16,7 +16,7 @@ as a short reversed region at the upstream end of the patch (e.g. the wing's pre
 Evaluate the patches where separation matters (suction side, diffuser roof), not those.
 
 Usage (OpenFOAM environment sourced):
-    python -m gev.separation <case> [--patches body_suction ...] [--U 31]
+    python -m casetools.separation <case> [--patches body_suction ...] [--U 31]
 """
 
 import argparse

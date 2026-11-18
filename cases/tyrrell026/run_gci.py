@@ -17,8 +17,8 @@ from pathlib import Path
 
 import _path  # noqa: F401
 import run_sweep
-from gev import mesh2d_gmsh, mesh2d_snappy
-from gev.foam import n_cells
+from casetools import mesh2d_gmsh, mesh2d_snappy
+from casetools.foam import n_cells
 from run_sweep import MESHERS
 
 HERE = Path(__file__).resolve().parent

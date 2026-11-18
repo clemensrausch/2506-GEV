@@ -1,4 +1,4 @@
-"""gev: meshing, solver settings and evaluation of validated OpenFOAM cases for ground-effect aerodynamics.
+"""casetools: meshing, solver settings and evaluation of validated OpenFOAM cases for ground-effect aerodynamics.
 
 Requires OpenFOAM v2506 (openfoam.com) sourced in the shell that runs the scripts.
 """

@@ -11,8 +11,8 @@ from pathlib import Path
 import numpy as np
 
 import _path  # noqa: F401  (repository root on sys.path)
-from gev import geometry2d
-from gev.tables import read_csv
+from casetools import geometry2d
+from casetools.tables import read_csv
 
 DATA = Path(__file__).resolve().parent / "data"
 SINGLE = DATA / "tyrrell026_table2.csv"

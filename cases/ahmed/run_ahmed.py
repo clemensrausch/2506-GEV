@@ -1,4 +1,4 @@
-"""Ahmed body (ERCOFTAC case 82) with the 3D template gev.mesh3d: geometry, mesh, solve.
+"""Ahmed body (ERCOFTAC case 82) with the 3D template casetools.mesh3d: geometry, mesh, solve.
 
 The validated runs are ahmed25_wf_lust and ahmed35_wf_lust: wall functions on the body, LUST for U, solver
 preset "fast", background cell 0.08 m (grid study: --cell 0.104 / 0.08 / 0.0615).
@@ -17,7 +17,7 @@ import re
 
 import _path  # noqa: F401
 import ahmed_body
-from gev import RUNS, mesh3d, run3d
+from casetools import RUNS, mesh3d, run3d
 
 CASES = RUNS / "ahmed"
 

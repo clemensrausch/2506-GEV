@@ -21,9 +21,9 @@ import matplotlib.pyplot as plt
 
 import _path  # noqa: F401
 import wing
-from gev import mesh2d_gmsh, mesh2d_snappy
-from gev.foam import read_dat
-from gev.tables import read_csv
+from casetools import mesh2d_gmsh, mesh2d_snappy
+from casetools.foam import read_dat
+from casetools.tables import read_csv
 from run_sweep import CASES, N_PROCS, solve
 
 HERE = Path(__file__).resolve().parent

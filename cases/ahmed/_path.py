@@ -1,4 +1,4 @@
-"""Puts the repository root on sys.path, so that the case scripts can import gev when run directly."""
+"""Puts the repository root on sys.path, so that the case scripts can import casetools when run directly."""
 import sys
 from pathlib import Path
 

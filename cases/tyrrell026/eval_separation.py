@@ -1,6 +1,6 @@
 """Trailing-edge separation on the suction side, compared with Zerihan (2001) Table 9 (oil flow).
 
-Evaluates the existing sweep and grid-study cases with gev.separation (no new runs): skin friction along the
+Evaluates the existing sweep and grid-study cases with casetools.separation (no new runs): skin friction along the
 suction side and the start of reversed flow x_sep/c, measured along the chord line from the leading edge. For
 runs that end periodic (h/c = 0.090) the values are a snapshot of the last iteration.
 
@@ -21,8 +21,8 @@ import numpy as np
 
 import _path  # noqa: F401
 import wing
-from gev import separation
-from gev.tables import read_csv
+from casetools import separation
+from casetools.tables import read_csv
 from run_sweep import HEIGHTS, case_dir
 
 HERE = Path(__file__).resolve().parent

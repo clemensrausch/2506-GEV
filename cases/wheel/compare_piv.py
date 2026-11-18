@@ -33,8 +33,8 @@ import numpy as np
 from scipy.interpolate import griddata
 
 import _path  # noqa: F401
-from gev import RUNS
-from gev.foam import write
+from casetools import RUNS
+from casetools.foam import write
 
 HERE = Path(__file__).resolve().parent
 import wheel_geometry as wg  # noqa: E402

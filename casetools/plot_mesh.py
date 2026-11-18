@@ -1,6 +1,6 @@
 """Plot a 2D OpenFOAM mesh (ascii polyMesh) from the faces of one empty patch.
 
-Usage:  python -m gev.plot_mesh <case> out.png [--patch back] [--window x0 x1 y0 y1 ...]
+Usage:  python -m casetools.plot_mesh <case> out.png [--patch back] [--window x0 x1 y0 y1 ...]
 """
 
 import argparse

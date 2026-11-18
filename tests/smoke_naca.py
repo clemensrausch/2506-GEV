@@ -15,8 +15,8 @@ sys.path.insert(0, str(ROOT))
 
 import numpy as np  # noqa: E402
 
-from gev import RUNS, geometry2d, mesh2d_gmsh  # noqa: E402
-from gev.foam import n_cells, read_dat, sh  # noqa: E402
+from casetools import RUNS, geometry2d, mesh2d_gmsh  # noqa: E402
+from casetools.foam import n_cells, read_dat, sh  # noqa: E402
 
 
 def main():

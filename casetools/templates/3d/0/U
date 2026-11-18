@@ -53,7 +53,7 @@ boundaryField
         type            noSlip;
     }
 
-    #include "partBCs.U"                // per-part overrides written by gev.mesh3d (e.g. wheels)
+    #include "partBCs.U"                // per-part overrides written by casetools.mesh3d (e.g. wheels)
 }
 
 // ************************************************************************* //

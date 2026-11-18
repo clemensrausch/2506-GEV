@@ -21,13 +21,21 @@ the slant and the drag came out about 50 % too high.
 | Data | wall pressure taps on roof, slant, base and side (Lienhart & Becker 2003, ERCOFTAC case 82) |
 | Drag | 0.285 (25°) and about 0.26 (35°) from Ahmed et al. (1984); 0.299 and 0.279 measured by W. Meile at TU Graz at 40 m/s (reported by Möller et al. 2008; see also Meile et al. 2011) |
 
+The reference values need care. Ahmed et al. measured forces at 60 m/s in a different tunnel; Lienhart
+and Becker, whose geometry and pressures this case uses, measured no forces at all. Their pressures and
+Ahmed's drag breakdown disagree on the base by almost a factor of two. The first comparison here used
+Ahmed's drag alone and put the computation 13 % too high. Part of that gap was the reference: integrated
+over slant and base, Lienhart and Becker's pressures give more drag than Ahmed's breakdown. The rest closed
+with the wall treatment and the velocity scheme described below. The case is therefore judged on Lienhart
+and Becker's wall pressures, with the drag of both force measurements as a range.
+
 The nose is the measured DLR surface of the ERCOFTAC data set. It deviates by up to 3 mm from the
 R 100 mm circle that many studies use. The long edges are rounded with r ≈ 2.5 mm as in the DLR data,
 although the drawing shows them sharp.
 
 ## Setup
 
-Half model with a symmetry plane, meshed by `gev.mesh3d` with snappyHexMesh.
+Half model with a symmetry plane, meshed by `casetools.mesh3d` with snappyHexMesh.
 
 | Item | Choice | Reason |
 |---|---|---|
@@ -39,7 +47,7 @@ Half model with a symmetry plane, meshed by `gev.mesh3d` with snappyHexMesh.
 | Schemes | LUST for U, upwind for k and ω | see below |
 | Solver | SIMPLEC, preset `fast` (relTol as the motorBike tutorial) | on the same mesh `fast` and `strict` gave C_d 0.356 and 0.358 after 200 iterations, `strict` took 7 times longer per iteration |
 | Start | potentialFoam | |
-| Stop and mean | force rules of `gev.convergence`; mean over the last window of 400 to 667 iterations; pMean from iteration 400 | 25° settled after 2014 iterations, 35° swings and ran to 3000 |
+| Stop and mean | force rules of `casetools.convergence`; mean over the last window of 400 to 667 iterations; pMean from iteration 400 | 25° settled after 2014 iterations, 35° swings and ran to 3000 |
 
 C_d and C_l refer to the full frontal area of 0.112 m² and cover the body without the stilts.
 

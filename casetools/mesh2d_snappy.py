@@ -8,7 +8,7 @@ Coordinates: x = flow, y = vertical (ground at y = 0), z = span. Requires a sour
 environment.
 
 Usage from Python:  mesh(case, body, TYRRELL)    (body from geometry2d, profile = dict of settings below)
-Command line (demo):  python -m gev.mesh2d_snappy CASE   (rectangle with the Ahmed body's proportions)
+Command line (demo):  python -m casetools.mesh2d_snappy CASE   (rectangle with the Ahmed body's proportions)
 """
 
 import argparse

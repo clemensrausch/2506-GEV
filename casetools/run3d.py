@@ -1,6 +1,6 @@
 """Solve a meshed 3D case (mesh3d.mesh): rebalance, potentialFoam start, simpleFoam with force-based stop rules.
 
-Stop rules (gev.convergence): the run stops when the forces stand (plateau: Cl(f), Cl(r), Cd within 0.1 % over
+Stop rules (casetools.convergence): the run stops when the forces stand (plateau: Cl(f), Cl(r), Cd within 0.1 % over
 150 iterations) or when the means of two consecutive windows (whole shedding periods, at least 400 iterations)
 differ by less than 0.5 % (lift) / 1 % (drag) after iteration 1200. Forces are averaged over the last 200
 iterations (plateau) or the last window (settled, or unsettled at the iteration limit = "unsteady").
